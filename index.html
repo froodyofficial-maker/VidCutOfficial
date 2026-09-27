@@ -9,99 +9,412 @@
 <body>
   <div class="app-shell">
     <aside class="sidebar">
-      <div class="brand"><span class="brand-mark">V</span><span>VidCut</span></div>
+      <div class="brand">
+        <span class="brand-mark">V</span>
+        <span>VidCut</span>
+      </div>
+
       <button id="addMediaBtn" class="primary-btn">＋ Add media</button>
-      <input id="fileInput" type="file" accept="video/*,audio/*,image/*" multiple hidden>
+
+      <input
+        id="fileInput"
+        type="file"
+        accept="video/*,audio/*,image/*"
+        multiple
+        hidden
+      >
+
       <nav>
-        <button class="nav-item active" data-panel="media">▣ <span>Media</span></button>
-        <button class="nav-item" data-panel="cc">◒ <span>CCs</span></button>
-        <button class="nav-item" data-panel="transitions">✦ <span>Transitions</span></button>
-        <button class="nav-item" data-panel="effects">⌁ <span>Effects</span></button>
+        <button class="nav-item active" data-panel="media">
+          ▣ <span>Media</span>
+        </button>
+
+        <button class="nav-item" data-panel="cc">
+          ◒ <span>CCs</span>
+        </button>
+
+        <button class="nav-item" data-panel="transitions">
+          ✦ <span>Transitions</span>
+        </button>
+
+        <button class="nav-item" data-panel="effects">
+          ⌁ <span>Effects</span>
+        </button>
       </nav>
+
       <div class="side-bottom">
-        <button id="projectBtn" class="ghost-btn">⚙ Project</button>
-        <button id="exportBtn" class="export-btn">Export MP4 <span>↗</span></button>
+        <button id="projectBtn" class="ghost-btn">
+          ⚙ Project
+        </button>
+
+        <button id="exportBtn" class="export-btn">
+          Export MP4 <span>↗</span>
+        </button>
       </div>
     </aside>
 
     <main class="main">
+
+      <!-- TOP BAR -->
       <header class="topbar">
         <div>
           <div class="eyebrow">SOCIAL EDITOR</div>
-          <input id="projectName" class="project-name" value="Untitled Edit" aria-label="Project name">
+
+          <input
+            id="projectName"
+            class="project-name"
+            value="Untitled Edit"
+            aria-label="Project name"
+          >
         </div>
+
         <div class="top-actions">
-          <button id="undoBtn" class="icon-btn" title="Undo">↶</button>
-          <button id="redoBtn" class="icon-btn" title="Redo">↷</button>
+          <button id="undoBtn" class="icon-btn" title="Undo">
+            ↶
+          </button>
+
+          <button id="redoBtn" class="icon-btn" title="Redo">
+            ↷
+          </button>
+
           <span class="divider"></span>
-          <select id="aspectSelect" class="select"><option value="9:16">9:16</option><option value="16:9">16:9</option><option value="1:1">1:1</option><option value="4:5">4:5</option></select>
-          <button id="saveBtn" class="ghost-btn">Save</button>
+
+          <select id="aspectSelect" class="select">
+            <option value="9:16">9:16</option>
+            <option value="16:9">16:9</option>
+            <option value="1:1">1:1</option>
+            <option value="4:5">4:5</option>
+          </select>
+
+          <button id="saveBtn" class="ghost-btn">
+            Save
+          </button>
         </div>
       </header>
 
+
+      <!-- WORKSPACE -->
       <section class="workspace">
+
+        <!-- PREVIEW -->
         <div class="preview-panel">
-          <div class="preview-head"><span>Preview</span><span id="timeLabel">00:00.00 / 00:00.00</span></div>
+
+          <div class="preview-head">
+            <span>Preview</span>
+            <span id="timeLabel">
+              00:00.00 / 00:00.00
+            </span>
+          </div>
+
           <div id="previewStage" class="preview-stage ratio-916">
+
             <div id="emptyPreview" class="empty-preview">
               <div class="empty-icon">▶</div>
-              <strong>Drop videos here</strong>
-              <span>Add media to start editing</span>
-              <button id="emptyAdd" class="small-btn">Choose files</button>
+
+              <strong>
+                Drop videos here
+              </strong>
+
+              <span>
+                Add media to start editing
+              </span>
+
+              <button id="emptyAdd" class="small-btn">
+                Choose files
+              </button>
             </div>
-            <video id="previewVideo" playsinline></video>
-            <div id="transitionOverlay" class="transition-overlay"></div>
-            <div id="previewBadge" class="preview-badge">PREVIEW</div>
+
+            <video
+              id="previewVideo"
+              playsinline
+            ></video>
+
+            <div
+              id="transitionOverlay"
+              class="transition-overlay"
+            ></div>
+
+            <div
+              id="previewBadge"
+              class="preview-badge"
+            >
+              PREVIEW
+            </div>
+
           </div>
+
+
+          <!-- TRANSPORT -->
           <div class="transport">
-            <button id="playBtn" class="play-btn">▶</button>
-            <button id="backBtn" class="icon-btn">↶</button>
-            <button id="forwardBtn" class="icon-btn">↷</button>
-            <input id="scrubber" class="scrubber" type="range" min="0" max="1" value="0" step="0.01">
-            <span id="durationText">00:00</span>
+
+            <button
+              id="playBtn"
+              class="play-btn"
+            >
+              ▶
+            </button>
+
+            <button
+              id="backBtn"
+              class="icon-btn"
+            >
+              ↶
+            </button>
+
+            <button
+              id="forwardBtn"
+              class="icon-btn"
+            >
+              ↷
+            </button>
+
+            <input
+              id="scrubber"
+              class="scrubber"
+              type="range"
+              min="0"
+              max="1"
+              value="0"
+              step="0.01"
+            >
+
+            <span id="durationText">
+              00:00
+            </span>
+
           </div>
+
         </div>
 
+
+        <!-- INSPECTOR -->
         <section class="inspector">
-          <div id="panel-media" class="panel active">
-            <div class="panel-title">Files <span id="mediaCount">0</span></div>
-            <div id="mediaGrid" class="media-grid"></div>
+
+          <!-- MEDIA -->
+          <div
+            id="panel-media"
+            class="panel active"
+          >
+
+            <div class="panel-title">
+              Files
+              <span id="mediaCount">0</span>
+            </div>
+
+            <div
+              id="mediaGrid"
+              class="media-grid"
+            ></div>
+
           </div>
-          <div id="panel-cc" class="panel">
-            <div class="panel-title">CC presets <span>previewable</span></div>
-            <div id="ccGrid" class="preset-grid"></div>
+
+
+          <!-- CC -->
+          <div
+            id="panel-cc"
+            class="panel"
+          >
+
+            <div class="panel-title">
+              CC presets
+              <span>previewable</span>
+            </div>
+
+            <div
+              id="ccGrid"
+              class="preset-grid"
+            ></div>
+
           </div>
-          <div id="panel-transitions" class="panel">
-            <div class="panel-title">Transitions <span>layer-based</span></div>
-            <div id="transitionGrid" class="preset-grid"></div>
-            <div class="hint">Add a transition layer below the video track. Move the playhead to a cut, select the layer, then click a preset to place it.</div>
+
+
+          <!-- TRANSITIONS -->
+          <div
+            id="panel-transitions"
+            class="panel"
+          >
+
+            <div class="panel-title">
+              Transitions
+              <span>layer-based</span>
+            </div>
+
+            <div
+              id="transitionGrid"
+              class="preset-grid"
+            ></div>
+
+            <div class="hint">
+              Add a transition layer below the video track.
+              Move the playhead to a cut, select the layer,
+              then click a preset to place it.
+            </div>
+
           </div>
-          <div id="panel-effects" class="panel">
-            <div class="panel-title">Clip controls</div>
-            <div id="clipControls" class="controls-empty">Select a clip on the timeline.</div>
+
+
+          <!-- EFFECTS -->
+          <div
+            id="panel-effects"
+            class="panel"
+          >
+
+            <div class="panel-title">
+              Clip controls
+            </div>
+
+            <div
+              id="clipControls"
+              class="controls-empty"
+            >
+              Select a clip on the timeline.
+            </div>
+
           </div>
+
         </section>
+
       </section>
 
+
+      <!-- TIMELINE -->
       <section class="timeline-wrap">
+
         <div class="timeline-toolbar">
-          <div class="tool-group"><button id="splitBtn" class="tool-btn">✂ Split <kbd>Shift+D</kbd></button><button id="addLayerBtn" class="tool-btn accent-tool">＋ Transition Layer</button><button id="deleteBtn" class="tool-btn danger">Delete</button></div>
-          <div class="tool-group"><button id="zoomOut" class="tool-btn">−</button><span id="zoomValue">100%</span><button id="zoomIn" class="tool-btn">＋</button></div>
+
+          <div class="tool-group">
+
+            <button
+              id="splitBtn"
+              class="tool-btn"
+            >
+              ✂ Split
+              <kbd>Shift+D</kbd>
+            </button>
+
+            <button
+              id="addLayerBtn"
+              class="tool-btn accent-tool"
+            >
+              ＋ Transition Layer
+            </button>
+
+            <button
+              id="deleteBtn"
+              class="tool-btn danger"
+            >
+              Delete
+            </button>
+
+          </div>
+
+
+          <div class="tool-group">
+
+            <button
+              id="zoomOut"
+              class="tool-btn"
+            >
+              −
+            </button>
+
+            <span id="zoomValue">
+              100%
+            </span>
+
+            <button
+              id="zoomIn"
+              class="tool-btn"
+            >
+              ＋
+            </button>
+
+          </div>
+
         </div>
-        <div id="timeline" class="timeline">
-          <div class="timeline-ruler" id="ruler"></div>
-          <div class="track-label">VIDEO</div>
-          <div id="videoTrack" class="video-track"></div>
-          <div class="track-label transition-label">TRANS</div><div id="transitionTracks" class="transition-tracks"></div><div class="track-label audio-label">AUDIO</div>
-          <div class="audio-track"><div class="audio-wave"></div></div>
-          <div id="playhead" class="playhead"><span></span></div>
+
+
+        <!-- TIMELINE -->
+        <div
+          id="timeline"
+          class="timeline"
+        >
+
+          <div
+            class="timeline-ruler"
+            id="ruler"
+          ></div>
+
+
+          <!-- VIDEO TRACK -->
+          <div class="track-label">
+            VIDEO
+          </div>
+
+          <div
+            id="videoTrack"
+            class="video-track"
+          ></div>
+
+
+          <!-- TRANSITION TRACKS -->
+          <div class="track-label transition-label">
+            TRANS
+          </div>
+
+          <div
+            id="transitionTracks"
+            class="transition-tracks"
+          ></div>
+
+
+          <!-- AUDIO -->
+          <div class="track-label audio-label">
+            AUDIO
+          </div>
+
+          <div class="audio-track">
+            <div class="audio-wave"></div>
+          </div>
+
+
+          <!-- PLAYHEAD -->
+          <div
+            id="playhead"
+            class="playhead"
+          >
+            <span></span>
+          </div>
+
         </div>
+
       </section>
+
     </main>
   </div>
 
-  <div id="toast" class="toast"></div>
-  <div id="modal" class="modal hidden"><div class="modal-card" id="modalCard"></div></div>
+
+  <!-- TOAST -->
+  <div
+    id="toast"
+    class="toast"
+  ></div>
+
+
+  <!-- MODAL -->
+  <div
+    id="modal"
+    class="modal hidden"
+  >
+    <div
+      class="modal-card"
+      id="modalCard"
+    ></div>
+  </div>
+
+
+  <!-- APP -->
   <script src="app.js"></script>
+
 </body>
 </html>

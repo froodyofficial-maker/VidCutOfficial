@@ -1,0 +1,7 @@
+{
+  "name":"vidcut-social-editor",
+  "version":"1.0.0",
+  "private":true,
+  "description":"VidCut browser social video editor prototype",
+  "scripts":{"start":"python -m http.server 4173"}
+}
